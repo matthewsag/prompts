@@ -1,0 +1,22 @@
+
+
+1. Code Review
+Brings a structured analysis of the code into the context, informing the subsequent plan.
+Goal: Prevent the LLM from making point changes to the code without considering the wider context.
+Example note: Confident this works in testing.
+
+2. Planning
+Produces a high-level design and implementation plan to check before generating code.
+Key point: Avoid filling the context with generated, unwanted code that doesn’t fit needs or causes back-and-forth.
+Usually includes relevant options. At this stage, drill into the plan (e.g., tell me more about step 3, can we reuse implementation Y, show me a snippet, what about Libraries etc.) to refine.
+
+3. Output
+Once the plan is agreed upon, move to code production.
+Example issue: Variable naming inconsistency caused regenerated code to lose context and hallucinate variable names over long sessions.
+Fix applied: Export old chats and run stats; happy with results for now.
+Example note: Code fencing instruction was adjusted because switching to a front-end couldn’t highlight correctly—this is the right way.
+
+4. Security Review
+Preferred to keep this step post-hoc.
+Purpose: Provide a second pair of eyes and suggest improvements.
+Tip: You may want to incorporate security needs earlier in the chain.
